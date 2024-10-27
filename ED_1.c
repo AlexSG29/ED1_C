@@ -44,22 +44,31 @@ int addElement(arrayLength_t *array, int newValue) {
 }
 
 int main() {
-    arrayLength_t myArray;
+    arrayLength_t arr;
 
     // Inicializa la estructura
-    if (initArray(&myArray) == 0) { 
-        printArr(&myArray); // Muestra el estado inicial
-
-        // Añade elementos
-        addElement(&myArray, 5);
-        addElement(&myArray, 10);
-        addElement(&myArray, 15);
-
-        // Muestra el estado después de añadir elementos
-        printArr(&myArray); // Debe mostrar: {[5, 10, 15, -1, -1, -1, -1, -1, -1, -1], 3, 30}
+    if (initArray(&arr) == 0) { // Cambiado para verificar correctamente la inicialización
+        printf("Array inicializado\n");
     } else {
-        printf("Error al inicializar el array.\n");
+        printf("Error en inicialización\n");
     }
+
+    printArr(&arr);
+
+    // Añade elementos y verifica
+    if (addElement(&arr, 22) == 0) {
+        printf("Elemento añadido\n");
+    } else {
+        printf("Error al añadir elemento\n");
+    }
+    printArr(&arr);
+
+    if (addElement(&arr, 44) == 0) {
+        printf("Elemento añadido\n");
+    } else {
+        printf("Error al añadir elemento\n");
+    }
+    printArr(&arr);
 
     return 0;
 }
